@@ -1,0 +1,14 @@
+name: Auto Comment on New Issue
+on:
+  issues:
+    types: [opened]
+jobs:
+  add-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add thank you comment
+        uses: actions-js/github-add-issue-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: 'Thank you for your contribution!'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
